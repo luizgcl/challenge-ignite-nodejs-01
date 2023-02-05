@@ -7,18 +7,25 @@ export class TaskRepository {
     this.#database = database;
   }
 
+  find() {
+    return {
+      get: () => this.#database.select('tasks'),
+      search: (params) => this.#database.select('tasks', params)
+    };
+  }
+
   findById(id) {
-    const [task] = this.#database.select('tasks', { id });
+    const [task] = this.find().search({ id });
     return task;
   }
 
   findAll() {
-    const tasks = this.#database.select('tasks');
+    const tasks = this.find().get();
     return tasks;
   }
 
   findBy(params) {
-    const tasks = this.#database.select('tasks', params);
+    const tasks = this.find().search(params);
     return tasks;
   }
 

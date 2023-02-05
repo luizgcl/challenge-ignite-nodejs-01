@@ -25,11 +25,10 @@ export class Database {
     if (search) {
       data = data.filter(row => {
         return Object.entries(search).some(([key, value]) => {
-          if (!value) return true;
-
-          return row[key].includes(value);
-        });
-      });
+          if(!value) return true;
+          return row[key].includes(decodeURI(value));
+        })
+      })
     }
 
     return data;

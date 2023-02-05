@@ -11,8 +11,18 @@ export const routes = [
   {
     method: 'GET',
     path: buildRouteParams('/tasks'),
-    handler: (_, res) => {
-      const tasks = taskRepository.findAll();
+    handler: (req, res) => {
+      const { search } = req.query
+
+      const tasks = (
+        req.query != {} ?
+        taskRepository.findBy({
+          title: search,
+          description: search,
+        }) :
+        taskRepository.findAll()
+      )
+      
       return res.writeHead(200).end(JSON.stringify(tasks));
     }
   },
