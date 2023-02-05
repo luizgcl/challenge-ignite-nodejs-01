@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-challenge-01",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": {
+    "name": "Luiz Gustavo",
+    "email": "luiizgcl@gmail.com",
+    "url": "me.luizgcl.com.br"
+  },
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "csv-parse": "^5.3.4",
+    "nodemon": "^2.0.20"
+  }
+}
